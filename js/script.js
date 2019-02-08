@@ -9,6 +9,7 @@ $(function () { // Same as document.addEventListener("DOMContentLoaded"...
   });
 });
 
+
 (function (global) {
 
 var dc = {};
@@ -62,7 +63,6 @@ var switchMenuToActive = function () {
 
 // On page load (before images or CSS)
 document.addEventListener("DOMContentLoaded", function (event) {
-
 // TODO: STEP 0: Look over the code from
 // *** start ***
 // to
@@ -81,6 +81,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 // *** start ***
 // On first load, show home view
 showLoading("#main-content");
+
 $ajaxUtils.sendGetRequest(
   allCategoriesUrl,
   buildAndShowHomeHTML, // ***** <---- TODO: STEP 1: Substitute [...] ******
@@ -92,7 +93,7 @@ $ajaxUtils.sendGetRequest(
 // Builds HTML for the home page based on categories array
 // returned from the server.
 function buildAndShowHomeHTML (categories) {
-
+  
   // Load home snippet page
   $ajaxUtils.sendGetRequest(
     homeHtmlUrl,
@@ -100,7 +101,7 @@ function buildAndShowHomeHTML (categories) {
       var chosenCategory= chooseRandomCategory(categories);
       var short_name_sample="'"+chosenCategory.short_name + "'";
       var homeHtmlToInsertIntoMainPage=homeHtml;
-      homeHtmlToInsertIntoMainPage=insertProperty(html, "randomCategoryShortName",short_name_sample);
+      homeHtmlToInsertIntoMainPage=insertProperty(homeHtmlToInsertIntoMainPage, "randomCategoryShortName",short_name_sample);
       
 
       // TODO: STEP 2: Here, call chooseRandomCategory, passing it retrieved 'categories'
